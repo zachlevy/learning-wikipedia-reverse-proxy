@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require_relative "response_modifier"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,8 +16,10 @@ module WebReverseProxy
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.middleware.use ResponseModifier
+
     # reverse proxy
-    config.middleware.insert(0, Rack::ReverseProxy) do
+    config.middleware.use Rack::ReverseProxy do
       reverse_proxy_options preserve_host: true
       reverse_proxy /^(.*)$/, "#{ENV["PROXY_DOMAIN"]}$1"
     end
