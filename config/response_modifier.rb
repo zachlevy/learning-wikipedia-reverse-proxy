@@ -22,8 +22,8 @@ class ResponseModifier
   end
 
   def self.addScript bodyString
-    newBodyString = bodyString.gsub("</body>", "<script type=\"text/javascript\" src=\"http://localhost:3000/wikipedia.js\"></script></body>")
-    # bodyString = "<html><head></head><body><h1 id=\"test-div\">Hello David</h1><script type=\"text/javascript\">document.getElementById('test-div').innerHTML = 'testsets'</script></body>"
-    newBodyString
+    bodyString = bodyString.gsub("</body>", '<script type="text/javascript" src="http://localhost:3000/wikipedia.js"></script></body>')
+    bodyString = bodyString.gsub("</head>", '<link rel="stylesheet" type="text/css" href="http://localhost:3000/wikipedia.css"></head>')
+    bodyString
   end
 end
