@@ -23,6 +23,9 @@ Run the rails app with `$ rails s`.
 
 Now `http://locahost:3000` will show `https://twitter.com` and all the links will work.
 
+#### Injection
+for the basic localhost example, `INJECT_DOMAIN` is an environment variable for .
+
 ### Undesired Behavior
 * Redirects. The Location header is not modified, so a redirect will redirect you the original domain.
 * Absolute links. Relative links work fine, but absolute links do not. Most websites have relative links these days thankfully.
